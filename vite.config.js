@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: '/contact-book-react/',
+  base: '/todo-list-react-hooks/',
 })
