@@ -1,14 +1,15 @@
 export const TodoItem = ({ task, onToggle, onDelete }) => {
+    // console.log(task.isCompleted)
     return (
         <li className="flex items-center gap-3 p-2 border-b border-gray-200">
             <input 
                 type="checkbox" 
-                checked={task.isComplited || false}
-                onChange={() => onToggle(task.id, task.isComplited)}
+                checked={task.isCompleted || false}
+                onChange={() => onToggle(task.id, task.isCompleted)}
                 className="w-5 h-5 cursor-pointer"
             />
             
-            <h2 className={`text-lg ${task.isComplited ? "line-through text-gray-400" : "text-black"}`}>
+            <h2 className={`text-lg ${task.isCompleted ? "line-through text-gray-400" : "text-black"}`}>
                 {task.task}
             </h2>
 
