@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
 import { TodoItem } from "../TodoItem/TodoItem.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { getTasksThunk } from "../../redux/operations.js";
 
 export const TodosList = () => {
-    const [tasks, setTasks] = useState([]);
+    const dispatch = useDispatch();
+    const { data: tasks } = useSelector((state) => state.tasks)
 
-    const getTasksFromApi = async () => {
-        try {
-            const data = await fetch("https://6aabc034ea0e22daa6dc93b2.mockapi.io/todo-list/todos");
-            const tasksData = await data.json();
-            setTasks(tasksData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    console.log(tasks)
 
     useEffect(() => {
-        getTasksFromApi();
+        dispatch(getTasksThunk())
     }, []);
     
     const handleToggleTask = async (id, currentStatus) => {
